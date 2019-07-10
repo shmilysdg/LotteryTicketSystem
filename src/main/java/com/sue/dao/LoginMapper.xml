@@ -20,7 +20,7 @@
     select
     <include refid="Base_Column_List" />
     from login
-    where user_name = #{userName,jdbcType=INTEGER}
+    where user_name = #{userName,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from login

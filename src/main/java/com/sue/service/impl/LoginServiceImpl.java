@@ -5,6 +5,7 @@ import com.sue.entity.Login;
 import com.sue.service.ILoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
 
 @Service
 public class LoginServiceImpl implements ILoginService {
@@ -22,7 +23,7 @@ public class LoginServiceImpl implements ILoginService {
     public String login(String userName, String password) {
         Login login = loginMapper.selectByUserName(userName);
         if (login != null) {
-            if (login.getPassword().equals(password)){
+            if (DigestUtils.md5DigestAsHex(password.getBytes()).equals(login.getPassword())){
                 return "登录成功";
             } else {
                 return "密码不正确";
@@ -49,7 +50,7 @@ public class LoginServiceImpl implements ILoginService {
                 if("" != password && password != null){
                     Login login = new Login();
                     login.setUserName(userName);
-                    login.setPassword(password);
+                    login.setPassword(DigestUtils.md5DigestAsHex(password.getBytes()));
                     Integer flag = loginMapper.insert(login);
                     if(flag == 1){
                         return "注册成功";

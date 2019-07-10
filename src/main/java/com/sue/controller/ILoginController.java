@@ -1,13 +1,14 @@
 package com.sue.controller;
 
 public interface ILoginController {
+
     /**
-     * 登录
+     * 判断登陆
      * @param userName
      * @param password
      * @return String
      */
-    String login(String userName,String password);
+    String goLogin(String userName,String password);
 
     /**
      * 注册

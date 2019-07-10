@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sue.dao.BallMapper">
+  <resultMap id="BaseResultMap" type="com.sue.entity.Ball">
+    <id column="ball_id" jdbcType="INTEGER" property="ballId" />
+    <result column="issue" jdbcType="VARCHAR" property="issue" />
+    <result column="opening_time" jdbcType="VARCHAR" property="openingTime" />
+    <result column="red1" jdbcType="VARCHAR" property="red1" />
+    <result column="red2" jdbcType="VARCHAR" property="red2" />
+    <result column="red3" jdbcType="VARCHAR" property="red3" />
+    <result column="red4" jdbcType="VARCHAR" property="red4" />
+    <result column="red5" jdbcType="VARCHAR" property="red5" />
+    <result column="red6" jdbcType="VARCHAR" property="red6" />
+    <result column="blue" jdbcType="VARCHAR" property="blue" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ball_id, issue, opening_time, red1, red2, red3, red4, red5, red6, blue
+  </sql>
+  <select id="countRed"  resultType="java.lang.Integer">
+    select count(1)
+    <include refid="Base_Column_List" />
+    from ball
+    where red1 = #{red,jdbcType=VARCHAR}
+    or red2 = #{red,jdbcType=VARCHAR}
+    or red3 = #{red,jdbcType=VARCHAR}
+    or red4 = #{red,jdbcType=VARCHAR}
+    or red5 = #{red,jdbcType=VARCHAR}
+    or red6 = #{red,jdbcType=VARCHAR}
+  </select>
+  <select id="countRedLimit"  resultType="java.lang.Integer">
+    select count(1)
+    from (SELECT * FROM ball ORDER BY opening_time DESC LIMIT #{limit}) temp
+    where red1 = #{red,jdbcType=VARCHAR}
+    or red2 = #{red,jdbcType=VARCHAR}
+    or red3 = #{red,jdbcType=VARCHAR}
+    or red4 = #{red,jdbcType=VARCHAR}
+    or red5 = #{red,jdbcType=VARCHAR}
+    or red6 = #{red,jdbcType=VARCHAR}
+  </select>
+  <select id="countBlue" resultType="java.lang.Integer">
+    select count(1)
+    <include refid="Base_Column_List" />
+    from ball
+    where blue = #{blue,jdbcType=VARCHAR}
+  </select>
+  <select id="countBlueLimit"  resultType="java.lang.Integer">
+    select count(1)
+    from (SELECT * FROM ball ORDER BY opening_time DESC LIMIT #{limit}) temp
+    where blue = #{blue,jdbcType=VARCHAR}
+  </select>
+</mapper>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <script type="application/javascript" src="../js/jquery-1.8.3.min.js"></script>
+    <script type="application/javascript" src="../js/index.js"></script>
+</head>
+<body>
+    <div id="main">
+        <div id="left" style="float:left ; width: 60%;">
+            <h1 align="center">双色球一览</h1>
+            <iframe style=" width: 718px;height: 778px;" src="http://kaijiang.zhcw.com/zhcw/html/ssq/list.html"></iframe>
+        </div>
+        <div id="right" style="float:left ;width: 40%;">
+            <h1 align="center">双色球出现的次数</h1>
+            <div style="float: left;width: 50%;">
+                <div id="head">
+                    <span>种类：</span>
+                    <select class="color">
+                        <option value="blue" selected="selected">蓝球</option>
+                        <option value="red">红球</option>
+                    </select>
+                    <span>期数：</span>
+                    <select class="issue">
+                        <option value="all" >全部</option>
+                        <!--<option value="3300" selected="selected">最近3300期</option>-->
+                        <option value="thousand">最近1600期</option>
+                        <option value="330" selected="selected">最近330期</option>
+                        <option value="hundred">最近160期</option>
+                        <option value="33" selected="selected">最近33期</option>
+                        <option value="sixteen" selected="selected">最近16期</option>
+                    </select>
+                </div>
+                <table border="1" class="table" style="text-align: center;width: 255px;">
+
+                </table>
+            </div>
+            <div style="float: left;width: 50%;"></div>
+        </div>
+    </div>
+</body>
+</html>
